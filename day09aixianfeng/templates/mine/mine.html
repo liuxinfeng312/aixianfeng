@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block extcss %}
-    <link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
+<link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
 {% endblock %}
 {% block extjs %}
-    <script src="{% static 'mine/js/mine.js' %}"></script>
+<script src="{% static 'mine/js/mine.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
             <div class="user-content">
                 <p>
                     <span class="glyphicon glyphicon-user"></span>
-                    <a href="{% url 'axf:login' %}">{{ user.name | default:'未登录' }}</a>
+                    <a id="login-a">{{ user.name | default:'未登录' }}</a>
                 </p>
                 <p>
                     <span class="glyphicon glyphicon-th-list"></span>

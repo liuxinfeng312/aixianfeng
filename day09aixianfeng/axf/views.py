@@ -2,10 +2,11 @@ import hashlib
 import random
 import time
 
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from axf.models import Wheel, Nav, Mustbuy, Shop, Mainshow, Foodtype, Goods, User
+from axf.models import Wheel, Nav, Mustbuy, Shop, Mainshow, Foodtype, Goods, User, Cart
 
 
 def home(request):
@@ -28,6 +29,7 @@ def home(request):
         'shopcommends':shopcommends,
         'mainshows':mainshows
     }
+
 
 
     return render(request,'home/home.html' ,context=data)
@@ -70,12 +72,25 @@ def market(request,childid='0',sortid='0'):
             'id':item_arr[1]
         }
         childtype_list.append(temp_dir)
+
+    token=request.session.get('token','')
+    if token:
+        user=User.objects.get(token=token)
+        carts = user.cart_set.filter(number__gt=0)
+    else:
+        carts=None
+
     response_dir = {
         'foodtypes': foodtypes,
         'goods_list': goods_list,
         'childtype_list':childtype_list,
-        'childid': childid
+        'childid': childid,
+        'carts':carts
     }
+
+    back=request.COOKIES.get('back')
+
+
     return render(request,'market/market.html',context=response_dir)
 
 
@@ -92,7 +107,22 @@ def mine(request):
 
 
 def cart(request):
-    return render(request,'cart/cart.html')
+    token=request.session.get('token')
+
+
+    if token :
+        user=User.objects.get(token=token)
+        carts = user.cart_set.filter(number__gt=0)
+        isall=True
+        for cart in carts:
+            if not cart.isselect:
+                isall=False
+        return render(request,'cart/cart.html',context={'carts': carts,
+                                                        'isall':isall})
+    else:
+
+
+        return render(request,'mine/login.html')
 
 
 def generate_token():
@@ -136,6 +166,9 @@ def login(request):
     if request.method=='GET':
         return render(request,'mine/login.html')
     elif request.method=='POST':
+        back=request.COOKIES.get('back')
+        print(back)
+
         name=request.POST.get('name')
         password=request.POST.get('password')
         users=User.objects.filter(name=name).filter(password=password)
@@ -146,10 +179,83 @@ def login(request):
             user.save()
             request.session['token']=user.token
 
-            return  redirect('axf:mine')
+            if back == 'mine':
+                return  redirect('axf:mine')
+
+            elif back =='market':
+                return redirect('axf:marketbase')
         else:
             return  render(request,'mine/login.html')
 
 def logout(request):
     request.session.flush()
     return redirect('axf:mine')
+
+
+def addcart(request):
+    token=request.session.get('token','')
+
+    response_data={}
+    if token :
+
+        goodid=request.GET.get('goodid')
+        good=Goods.objects.get(pk=goodid)
+
+
+        response_data['statue']=1
+        user=User.objects.get(token=token)
+        carts=Cart.objects.filter(user=user).filter(goods=good)
+        if carts.exists():
+            cart=carts.first()
+            cart.number+=1
+            cart.save()
+        else:
+            cart=Cart()
+            cart.user=user
+            cart.goods=good
+            cart.number=1
+            cart.save()
+
+        response_data['statue'] = 1
+        response_data['number'] = cart.number
+        response_data['msg']='添加{}商品成功到购物车{}'.format(cart.goods.productlongname,cart.number)
+        return JsonResponse(response_data)
+    else:
+        response_data['statue']=-1
+        return JsonResponse(response_data)
+
+
+def subcart(request):
+    goodid=request.GET.get('goodid')
+    print(goodid)
+    response_data={}
+
+    token=request.session.get('token','')
+    print(token)
+    if token:
+        response_data={}
+        good=Goods.objects.get(pk=goodid)
+        user=User.objects.get(token=token)
+        carts = Cart.objects.filter(user=user).filter(goods=good)
+        if carts.exists():
+            cart=carts.first()
+            if cart.number>=1:
+                cart.number-=1
+
+                cart.save()
+                response_data['number'] = cart.number
+        response_data['statue'] = 1
+
+        response_data['msg'] = '删减商品成功{},商品剩余数量：{}'.format(cart.goods.productlongname,cart.number)
+        return JsonResponse(response_data)
+
+    else:
+        response_data['statue']=-2
+
+
+        return JsonResponse(response_data)
+
+
+
+
+

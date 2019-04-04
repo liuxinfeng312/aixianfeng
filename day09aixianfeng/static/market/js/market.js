@@ -69,5 +69,61 @@ $(function () {
         categoryViewHide()
         categoryShow = false
     })
+//添加到购物车 点击功能
 
+    $('.bt-wrapper>.glyphicon-chevron-right').click(function () {
+        console.log('点击成功')
+        goodid=$(this).attr('data-id')
+        console.log(goodid)
+        request_data={
+            'goodid':goodid
+
+        }
+        var $that = $(this)
+        $.get('/axf/addcart/',request_data,function (response) {
+            console.log(response)
+
+            if (response.statue==-1)
+                window.open('/axf/login/','_self')
+            else  if (response.statue ==1 ){
+                $that.prev().html(response.number)
+
+                console.log(45456)
+            }
+                $.cookie('back','market',{expires: 3,path: '/'})
+        })
+
+    //删除商品
+
+    })
+
+      $('.bt-wrapper>.glyphicon-chevron-left').click(function () {
+            console.log('删减成功')
+          var $that = $(this)
+          goodid=$(this).attr('data-id')
+          console.log(goodid)
+          request_data={
+                'goodid':goodid
+          }
+
+          $.get('/axf/subcart/',request_data,function (response) {
+
+              console.log(response)
+              if (response.statue==-2)
+                window.open('/axf/login/','_self')
+              else if(response.statue==1){
+                  $that.next().html(response.number)
+              }
+                $.cookie('back','market',{expires: 3,path: '/'})
+            //  else if (response.statue == 1) {
+            //     // // $that.next().html(response.number
+            //     // console.log(response.number))
+            // }
+          })
+
+
+
+
+        })
 })
+
