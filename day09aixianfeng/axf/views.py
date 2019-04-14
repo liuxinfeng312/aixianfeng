@@ -256,6 +256,49 @@ def subcart(request):
         return JsonResponse(response_data)
 
 
+def changecartselect(request):
+    cartid=request.GET.get('cartid')
+    cart=Cart.objects.get(pk=cartid)
+    cart.isselect= not cart.isselect
+    cart.save()
+    print(cartid)
+
+    response_data={
+        'msg':'修改状态成功',
+        'status':'1',
+        'isselect':cart.isselect
+    }
+    return JsonResponse(response_data)
 
 
+def changeall(request):
+    isall=request.GET.get('isall')
+    token=request.session.get('token')
+    user=User.objects.get(token=token)
+    carts=user.cart_set.all()
+    if isall=='true':
+        isall=True
+    else:
+        isall=False
+    for cart in carts:
+        cart.isselect=isall
+        cart.save()
+    # print(isall)
+    response_data={
+        'msg':'success',
+        'status':'1'
+    }
 
+    return JsonResponse(response_data)
+
+
+def generateorder(request):
+    return render(request, 'order/orderdetail.html')
+
+
+def orderlist(request):
+    return None
+
+
+def orderdetail(request):
+    return None

@@ -14,6 +14,7 @@
 //
 // })
 $(function () {
+    $('.cart').width(innerWidth)
     // 恢复盒子大小
 
 

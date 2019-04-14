@@ -1,4 +1,5 @@
 $(function () {
+    $('.cart').width(innerWidth)
 
     var index=$.cookie('index')
 

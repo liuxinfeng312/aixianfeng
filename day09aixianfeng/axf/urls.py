@@ -15,7 +15,12 @@ urlpatterns= [
     url(r'^logout/$',views.logout,name='logout'),
     url(r'^addcart/$',views.addcart,name='addcart'),
     url(r'^subcart/$',views.subcart,name='subcart'),
-    url(r'^cart/$',views.cart,name='cart')
+    url(r'^cart/$',views.cart,name='cart'),
+    url(r'^changecartselect/$',views.changecartselect,name='changecartselect'),
+    url(r'^changeall/$',views.changeall,name='changeall'),
+    url(r'^generateorder/$', views.generateorder, name='generateorder'),  # 生成订单
+    url(r'orderlist/$', views.orderlist, name='orderlist'),  # 订单列表
+    url(r'^orderdetail/(?P<identifier>[\d.]+)/$', views.orderdetail, name='orderdetail'),  # 订单详情
 
 ]
 
