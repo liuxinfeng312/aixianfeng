@@ -1,0 +1,7 @@
+﻿
+INSERT INTO `f_goods_category` VALUES ('1', '1', 'goods/images/banner01.jpg');
+INSERT INTO `f_goods_category` VALUES ('2', '2', 'goods/images/banner02_WMvZMSs.jpg');
+INSERT INTO `f_goods_category` VALUES ('3', '3', 'goods/images/banner03_jeCK8nm.jpg');
+INSERT INTO `f_goods_category` VALUES ('4', '4', 'goods/images/banner04_kw5TSq7.jpg');
+INSERT INTO `f_goods_category` VALUES ('5', '5', 'goods/images/banner05_bd0CgP6.jpg');
+INSERT INTO `f_goods_category` VALUES ('6', '6', 'goods/images/banner06_jMJMbOb.jpg');

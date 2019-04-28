@@ -1,0 +1,124 @@
+
+
+--商品分类表--
+
+DROP TABLE IF EXISTS `f_goods_category`;
+CREATE TABLE `f_goods_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_type` int(11) NOT NULL,
+  `category_front_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--商品表--
+
+DROP TABLE IF EXISTS `f_goods`;
+CREATE TABLE `f_goods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `goods_sn` varchar(50) NOT NULL,
+  `click_nums` int(11) NOT NULL,
+  `sold_nums` int(11) NOT NULL,
+  `fav_nums` int(11) NOT NULL,
+  `goods_nums` int(11) NOT NULL,
+  `market_price` double NOT NULL,
+  `shop_price` double NOT NULL,
+  `goods_brief` varchar(500) NOT NULL,
+  `ship_free` tinyint(1) NOT NULL,
+  `goods_front_image` varchar(100) DEFAULT NULL,
+  `is_new` tinyint(1) NOT NULL,
+  `is_hot` tinyint(1) NOT NULL,
+  `add_time` datetime NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `goods_desc` longtext,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`category_id`) REFERENCES `f_goods_category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--用户表--
+
+DROP TABLE IF EXISTS `f_user`;
+CREATE TABLE `f_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `birthday` date DEFAULT NULL,
+  `gender` varchar(6) NOT NULL,
+  `mobile` varchar(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--用户地址表--
+
+DROP TABLE IF EXISTS `f_user_address`;
+CREATE TABLE `f_user_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `province` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `district` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `signer_name` varchar(20) NOT NULL,
+  `signer_mobile` varchar(11) NOT NULL,
+  `add_time` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `signer_postcode` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `f_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--购物车表--
+
+DROP TABLE IF EXISTS `f_shopping_cart`;
+CREATE TABLE `f_shopping_cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nums` int(11) NOT NULL,
+  `add_time` datetime NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `is_select` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`goods_id`) REFERENCES `f_goods` (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `f_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--商品订单表--
+
+DROP TABLE IF EXISTS `f_order`;
+CREATE TABLE `f_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_sn` varchar(50) DEFAULT NULL,
+  `trade_no` varchar(50) DEFAULT NULL,
+  `pay_status` varchar(20) NOT NULL,
+  `post_script` varchar(200) NOT NULL,
+  `order_mount` double NOT NULL,
+  `pay_time` datetime DEFAULT NULL,
+  `address` varchar(200) NOT NULL,
+  `signer_name` varchar(20) NOT NULL,
+  `signer_mobile` varchar(11) NOT NULL,
+  `add_time` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_sn` (`order_sn`),
+  UNIQUE KEY `trade_no` (`trade_no`),
+  FOREIGN KEY (`user_id`) REFERENCES `f_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- 订单详情表--
+
+DROP TABLE IF EXISTS `f_order_goods`;
+CREATE TABLE `f_order_goods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_nums` int(11) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`goods_id`) REFERENCES `f_goods` (`id`),
+  FOREIGN KEY (`order_id`) REFERENCES `f_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

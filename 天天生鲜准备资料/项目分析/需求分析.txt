@@ -1,0 +1,132 @@
+﻿
+天天生鲜需求分析:
+
+day01:
+    模板拆分
+    首页
+    注册
+    登录
+    登录验证（中间件）
+    页面顶部登录状态展示
+day02:
+    商品详情
+    没登录情况--添加购物车(ajax)
+    登录情况--添加购物车(ajax)
+    购物车数据同步（中间件）
+    购物车数据刷新(ajax)
+day03:
+    购物车页面修改商品数量、勾选状态、总计价格、总计数量刷新
+    购物车中数据的删除
+    订单结算页面
+    收货地址
+day04:
+    创建订单
+    个人中心页面
+    订单详情页面
+    商品列表页面、排序等
+
+day05:
+    部署
+
+    达到效果:
+        47.106.180.185（公网）访问到首页
+    通过域名访问网站:
+        www.fresh_shop.com
+        1) 服务器在国内需要备案
+        2）服务器在国外不需要备案
+
+    1. 安装python3.6
+    2. 安装mysql
+    3. 部署
+        1）开发服务器和测试服务器上启动项目:
+            python manage.py runserver 0.0.0.0:80
+        2）线上服务器启动项目:
+            nginx + uwsgi + django
+            nginx + gunicorn  + django
+            nginx + django
+            apache + django
+    
+    3.1 开启远程访问
+    create user 'root'@'%' identified by '123456';
+    grant all privileges on *.* to 'root'@'%' identified by '123456';
+    flush privileges;
+
+    3.2 安装虚拟环境freshenv
+    virtualenv --no-site-packages -p /usr/local/python3/bin/python3 freshenv
+
+    3.3 安装虚拟环境中依赖的库
+    /home/env/freshenv/bin/pip install -r re_install.txt
+
+    3.4 启动项目
+    /home/env/freshenv/bin/python3 /home/src/fresh_shop/manage.py runserver 0.0.0.0:80
+
+    3.5 修改settings.py
+    ALLOWED_HOSTS = ['*']
+
+    4. 安装nginx和uwsgi
+        /home/env/freshenv/bin/pip3 install uwsgi
+
+    5. 编写nginx.conf文件和uwsgi.ini文件
+        nginx.conf内容:
+
+        server {
+            listen    80;
+            server_name 47.106.180.185;
+
+            access_log /home/logs/access.log;
+            error_log /home/logs/error.log;
+
+            location /static/ {
+                 alias /home/src/fresh_shop/static/;
+            }
+
+            location /media/ {
+                alias /home/src/fresh_shop/media/;
+            }
+
+            location / {
+                include uwsgi_params;
+                uwsgi_pass 127.0.0.1:8890;
+            }
+        }
+
+        uwsgi.ini内容:
+        [uwsgi]
+        master = true
+
+        processes = 4
+
+        chdir = /home/src/fresh_shop
+
+        pythonpath = /home/env/freshenv/bin/python3
+
+        module = fresh_shop.wsgi
+
+        socket = 127.0.0.1:8890
+
+        logto = /home/logs/uwsgi.log
+
+    5. 修改总的nginx文件
+
+        vim /etc/nginx/nginx.conf
+
+        systemctl restart nginx
+
+    6. 启动uwsgi
+    /home/env/freshenv/bin/uwsgi --ini /home/conf/uwsgi.ini 
+
+
+    常用命令:
+
+        4. 查看端口，杀掉进程
+            netstat -lntp
+            kill -9 PID
+        5. 查看文件
+            tail -f uwsgi.log
+
+
+
+
+
+
+

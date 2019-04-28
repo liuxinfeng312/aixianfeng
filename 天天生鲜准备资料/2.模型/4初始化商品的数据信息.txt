@@ -1,0 +1,77 @@
+﻿
+初始化商品的数据信息
+
+
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('7', '草莓', '1001', '0', '0', '0', '2000', '20', '1', '无', '1', 'goods/images/goods003_ctorEWk.jpg', '0', '0', '2018-08-27 09:44:13', '1', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('9', '葡萄', '1001', '0', '0', '0', '2000', '20', '10', '无', '1', 'goods/images/goods002_84wwc2I.jpg', '0', '0', '2018-08-27 11:47:47', '1', '<img src=\"/media/kindeditor/2018/8/14a57710-a9f2-11e8-8e97-80fa5b0af084.jpg\" alt=\"\" />新疆大葡萄，好吃又很甜');
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('10', '柠檬', '1003', '0', '0', '0', '1000', '5', '4', '无', '1', 'goods/images/goods001.jpg', '0', '0', '2018-08-27 14:07:02', '1', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('11', '奇异果', '1004', '0', '0', '0', '2000', '10', '8', '无', '1', 'goods/images/goods012.jpg', '0', '0', '2018-08-27 14:07:46', '1', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('12', '青岛野生海捕大青虾', '1005', '0', '0', '0', '1000', '300', '280', '无', '1', 'goods/images/goods018.jpg', '0', '0', '2018-08-27 14:09:04', '2', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('13', '扇贝', '1006', '0', '0', '0', '1000', '200', '180', '无', '1', 'goods/images/goods019.jpg', '0', '0', '2018-08-27 14:09:30', '2', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('14', '冷冻秋刀鱼', '1007', '0', '0', '0', '1000', '50', '48', '无', '1', 'goods/images/goods020.jpg', '0', '0', '2018-08-27 14:09:53', '2', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('15', '基围虾', '1008', '0', '0', '0', '1000', '160', '150', '无', '1', 'goods/images/goods021.jpg', '0', '0', '2018-08-27 14:10:20', '2', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('16', '前腿猪肉', '1009', '0', '0', '0', '1000', '38', '28', '无', '1', 'goods/images/goods022.png', '0', '0', '2018-08-27 14:16:48', '3', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('17', '精品牛腿肉', '1010', '0', '0', '0', '3000', '130', '120', '无', '1', 'goods/images/goods023.png', '0', '0', '2018-08-27 14:19:43', '3', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('18', '肥美牛排', '1011', '0', '0', '0', '2000', '88', '80', '无', '1', 'goods/images/goods024.png', '0', '0', '2018-08-27 14:20:09', '3', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('19', '精品羊排', '1012', '0', '0', '0', '3000', '190', '189', '无', '1', 'goods/images/goods025.png', '0', '0', '2018-08-27 14:20:38', '3', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('20', '红心鸡蛋', '1013', '0', '0', '0', '4000', '30', '28', '无', '1', 'goods/images/goods026.png', '0', '0', '2018-08-27 14:28:17', '4', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('21', '肥美鸡肉', '1014', '0', '0', '0', '3000', '50', '45', '无', '1', 'goods/images/goods027.png', '0', '0', '2018-08-27 14:28:47', '4', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('22', '骨肉相连', '1015', '0', '0', '0', '2000', '20', '18', '无', '1', 'goods/images/goods028.png', '0', '0', '2018-08-27 14:29:16', '4', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('23', '香辣鸭舌', '1016', '0', '0', '0', '2000', '15', '14', '无', '1', 'goods/images/goods029.png', '0', '0', '2018-08-27 14:29:43', '4', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('24', '无机物番茄', '1017', '0', '0', '0', '3000', '10', '8', '无', '1', 'goods/images/goods030.png', '0', '0', '2018-08-27 14:30:19', '5', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('25', '转基因红辣椒', '1018', '0', '0', '0', '2000', '5', '4.5', '无', '1', 'goods/images/goods031.png', '0', '0', '2018-08-27 14:30:44', '5', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('26', '新鲜竹笋', '1019', '0', '0', '0', '3000', '15', '14', '无', '1', 'goods/images/goods032.png', '0', '0', '2018-08-27 14:31:28', '5', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('27', '大南瓜', '1020', '0', '0', '0', '2000', '10', '8', '无', '1', 'goods/images/goods033.png', '0', '0', '2018-08-27 14:32:00', '5', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('28', '速冻饺子', '1021', '0', '0', '0', '2000', '18', '17', '无', '1', 'goods/images/goods034.png', '0', '0', '2018-08-27 14:32:20', '6', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('29', '思念油条', '1022', '0', '0', '0', '2000', '20', '18', '无', '1', 'goods/images/goods035.png', '0', '0', '2018-08-27 14:32:58', '6', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('30', '大肉丸子', '1023', '0', '0', '0', '500', '20', '19', '无', '1', 'goods/images/goods036.png', '0', '0', '2018-08-27 14:33:30', '6', null);
+
+INSERT INTO `f_goods` (`id`, `name`, `goods_sn`, `click_nums`, `sold_nums`, `fav_nums`, `goods_nums`,
+`market_price`, `shop_price`, `goods_brief`, `ship_free`, `goods_front_image`, `is_new`, `is_hot`, `add_time`, `category_id`, `goods_desc`) VALUES ('31', '熊猫蛋糕', '1024', '0', '0', '0', '1040', '20', '18', '无', '1', 'goods/images/goods037.png', '0', '0', '2018-08-27 14:34:03', '6', null);
+
